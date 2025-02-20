@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SafetyNet</string>
+    <string name="accessibility_service_description">Description for Accessibility Service</string>
+</resources>

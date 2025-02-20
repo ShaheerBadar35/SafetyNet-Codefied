@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actions xmlns:android="http://schemas.android.com/apk/res/android">
+    <action intentName="actions.intent.GET_THING">
+        <fulfillment urlTemplate="app://safetynet/{query}">
+            <parameter-mapping intentParameter="query" required="true" urlParameter="query" />
+        </fulfillment>
+        <trigger>
+            <queryPatterns>
+                <queryPattern trigger="true">SafetyNet {keyword}</queryPattern>
+            </queryPatterns>
+        </trigger>
+    </action>
+</actions>

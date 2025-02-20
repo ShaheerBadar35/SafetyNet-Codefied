@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "725212882343",
+    "firebase_url": "https://safety-net-af7bd-default-rtdb.firebaseio.com",
+    "project_id": "safety-net-af7bd",
+    "storage_bucket": "safety-net-af7bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725212882343:android:5fb680d696b68dff7c0282",
+        "android_client_info": {
+          "package_name": "com.safetynet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725212882343-7b8aqri9ro0rlrnn131k88s86hq1akot.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.safetynet",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "725212882343-vuptdisggn1aogprcranm68mq99j4ju9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.safetynet",
+            "certificate_hash": "f07b9fe92653d070c21ad53db64af687e3bfb9ed"
+          }
+        },
+        {
+          "client_id": "725212882343-olglgprgj472629gv4gosdet4eoqdcf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW94GumXHvVJIbU0pTMdPFJRNHCEmSBuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725212882343-cv7o1fboebqq57bvp31pj0tkujg3h0dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725212882343:android:acb6842305b762987c0282",
+        "android_client_info": {
+          "package_name": "com.safetynet.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725212882343-dj53erkgpitq0eia5fhcghd0skeqqm2m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.safetynet.app",
+            "certificate_hash": "f07b9fe92653d070c21ad53db64af687e3bfb9ed"
+          }
+        },
+        {
+          "client_id": "725212882343-vug5t114qbqbfr21nrkofkjja1hcsk1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.safetynet.app",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "725212882343-olglgprgj472629gv4gosdet4eoqdcf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW94GumXHvVJIbU0pTMdPFJRNHCEmSBuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725212882343-cv7o1fboebqq57bvp31pj0tkujg3h0dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,28 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "paths": {
+      "@assets": ["./assets"],
+      "@assets/*": ["./assets/*"],
+      "@routes": ["./routes"],
+      "@routes/*": ["./routes/*"],
+      "@screens": ["./screens"],
+      "@screens/*": ["./screens/*"],
+      "@components": ["./shared/components"],
+      "@components/*": ["./shared/components/*"],
+      "@hooks": ["./shared/hooks"],
+      "@hooks/*": ["./shared/hooks/*"],
+      "@redux": ["./shared/redux"],
+      "@redux/*": ["./shared/redux/*"],
+      "@services": ["./shared/services"],
+      "@services/*": ["./shared/services/*"],
+      "@theme": ["./shared/theme"],
+      "@theme/*": ["./shared/theme/*"],
+      "@utils": ["./shared/utils"],
+      "@utils/*": ["./shared/utils/*"]
+    }
+  }
+}
