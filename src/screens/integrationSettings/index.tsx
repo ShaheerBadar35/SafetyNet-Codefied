@@ -63,21 +63,6 @@ const IntegrationSettings = () => {
         setToggleCall911(!toggleCall911);
       },
     },
-    // {
-    //   id: 3,
-    //   title: 'Gesture Emergency Alerts',
-    //   subTitle:
-    //     'When the volume down button is pressed down three times it triggers emergency alerts.',
-    //   value: toggleGestureEmergencyAlerts,
-    //   onPress: () => {
-    //     handleIntegrationGestureEmergencyAlertsToggle(
-    //       user?.email,
-    //       !toggleGestureEmergencyAlerts,
-    //       dispatch,
-    //     );
-    //     setToggleGestureEmergencyAlerts(!toggleGestureEmergencyAlerts);
-    //   },
-    // },
   ];
 
   return (

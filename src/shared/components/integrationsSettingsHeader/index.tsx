@@ -35,7 +35,8 @@ const IntegrationSettingsHeader = (
         onPress={() => navigationRef?.current?.goBack()}
       />
       <View style={[styles.row, {...SPACING.mb4}]}>
-        <View style={{maxWidth: '70%'}}>
+        {/* <View style={{maxWidth: '80%'}}> */}
+        <View >
           <CustomText
             size={24}
             fontFamily={INTER.BOLD}

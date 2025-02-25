@@ -283,10 +283,10 @@ const SettingsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.LIGHT_GRAY,
+    backgroundColor: COLORS.PRIMARY,
   },
   appBar: {
-    backgroundColor: COLORS.PRIMARY, // Green color
+    backgroundColor: COLORS.LIGHT_GRAY, // Green color
     paddingVertical: RF(16),
     paddingHorizontal: WP(5),
     justifyContent: 'center',
@@ -298,8 +298,9 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   appBarText: {
-    fontSize: RF(20),
+    fontSize: RF(25),
     fontWeight: '600',
+    color: COLORS.BLACK,
   },
   optionsContainer: {
     width: '80%',

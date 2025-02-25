@@ -18,11 +18,14 @@ const addFamilyPlanUsers = (params: any) => {
 };
 
 const addPlanUsers = async ({users, message, user_email}: any) => {
+  console.log("USERS: ",users);
+  console.log("Message: ",message);
+  console.log("USER_EMAIL: ",user_email);
   try {
     if (!message || !user_email) {
       return {
         status: false,
-        message: 'Message and user emai are required.',
+        message: 'Message and user email are required.',
       };
     }
 
@@ -39,7 +42,7 @@ const addPlanUsers = async ({users, message, user_email}: any) => {
     for (const [index, item] of users.entries()) {
       const item = users?.[index];
       let password = TEMPORARY_PASSWORD;
-
+      console.log("User Email: ",item);
       try {
         const userCredential = await auth().createUserWithEmailAndPassword(
           item?.email.trim(),
@@ -93,12 +96,12 @@ const addPlanUsers = async ({users, message, user_email}: any) => {
       message: message,
     });
 
-    for (const [index, item] of emails.entries()) {
-      const resp: any = await sendPasswordResetMailMainAccount({
-        email: item,
-        mainAccount: user_email,
-      });
-    }
+    // for (const [index, item] of emails.entries()) {
+    //   const resp: any = await sendPasswordResetMailMainAccount({
+    //     email: item,
+    //     mainAccount: user_email,
+    //   });
+    // }
 
     if (email_send_response?.data?.status) {
       const added_family_plan_user_response: any = await addFamilyPlanUsers({
