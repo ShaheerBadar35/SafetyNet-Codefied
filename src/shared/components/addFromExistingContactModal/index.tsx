@@ -9,6 +9,7 @@ import {HP, RF, WP} from '@theme/responsive';
 import {SPACING} from '@theme/spacing';
 import React, {useState} from 'react';
 import {
+  Alert,
   FlatList,
   Modal,
   Pressable,
@@ -113,6 +114,11 @@ const AddFromExistingContactModal = ({
                 onPress={() => {
                   // Only proceed if there is at least one selected contact
                   if (selectedContacts.length > 0) {
+                    if((contacts?.find((itm: { number: any; })=>itm.number===selectedContacts.number))){
+                      console.log("DUPLICATE");
+                      Alert.alert('Error', 'Number already in Emergency Contacts.');
+                      return false;
+                    }                    
                     setLoading(true);
                     setSelectedContactsList(selectedContacts);
                     setTimeout(() => {

@@ -661,6 +661,7 @@ const Profile = () => {
         <AddNewContactModal
           open={modal?.addNewContact}
           disabled={selectedContactsList?.length == 4}
+          contactList={contactsList}
           onPressClose={() => toggleModal('addNewContact', false)}
           onPressBtn={(contact: any) => {
             addContact(setContactsList, setSelectedContactsList, contact);

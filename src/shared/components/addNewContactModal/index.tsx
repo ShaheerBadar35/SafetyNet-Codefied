@@ -246,11 +246,13 @@ interface AddNewContactModalProps {
   onPressClose: any;
   onPressBtn: any;
   alertContainerStyle?: ViewStyle;
+  contactList: Array<any>;
 }
 
 const AddNewContactModal = ({
   open,
   disabled = false,
+  contactList,
   onPressClose = () => {},
   onPressBtn = () => {},
   alertContainerStyle,
@@ -275,8 +277,12 @@ const AddNewContactModal = ({
       Alert.alert('Error', 'Please select a country and enter a phone number.');
       return false;
     }
-
-    const phoneNumberObj = parsePhoneNumberFromString(phoneNumber, {
+    if((contactList?.find((itm)=>itm.number===phoneNumber))){
+      console.log("DUPLICATE");
+      Alert.alert('Error', 'Number already in Emergency Contacts.');
+      return false;
+    }
+     const phoneNumberObj = parsePhoneNumberFromString(phoneNumber, {
       defaultCountry: country.cca2,
     });
 
@@ -411,7 +417,6 @@ const AddNewContactModal = ({
                   customContainerStyle={{width: '60%', alignSelf: 'center'}}
                   onPress={() => {
                     handleAdd();
-
                   }}
                 />
               </KeyboardAwareScrollView>

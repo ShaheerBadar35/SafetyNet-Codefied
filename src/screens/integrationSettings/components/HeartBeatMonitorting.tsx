@@ -16,7 +16,7 @@ const HeartBeatMonitoring = (props: HeartBeatMonitoringProps) => {
     <View style={[styles.container, containerStyle]}>
       <HeartRateThreshold disabled={disabled} />
       <SelectDevice disabled={disabled} containerStyle={{...SPACING.my4}} />
-      <EmergencyContacts disabled={disabled} />
+      {/* <EmergencyContacts disabled={disabled} /> */}
     </View>
   );
 };

@@ -38,7 +38,7 @@ const EmergencyContacts = (props: Partial<EmergencyContactsProps>) => {
         fontFamily={INTER.BOLD}
         color={COLORS.LIGHT_GRAY}
         style={{lineHeight: RF(25)}}>
-        Emergency Contactss
+        Emergency Contacts
       </CustomText>
       <FlatList
         showsVerticalScrollIndicator={false}
