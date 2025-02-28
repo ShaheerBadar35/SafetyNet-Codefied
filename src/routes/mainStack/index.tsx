@@ -269,13 +269,13 @@ const MainStack = () => {
         );
 
         purchaseErrorListener = RNIap.purchaseErrorListener(error => {
-          console.warn('Purchase Error:', error);
-          Toast.show({
-            type: TOAST_TYPES.ERROR,
-            props: {
-              title: error || 'Purchase Error',
-            },
-          });
+          // console.warn('Purchase Error:', error);
+          // Toast.show({
+          //   type: TOAST_TYPES.ERROR,
+          //   props: {
+          //     title: error || 'Purchase Error',
+          //   },
+          // });
         });
       } catch (err) {
         console.warn('Error initializing IAP:', err);

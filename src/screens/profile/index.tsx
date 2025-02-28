@@ -350,7 +350,7 @@ const Profile = () => {
     cleanupListeners();
     // startListening();
 
-    // Voice.onSpeechPartialResults = onSpeechResults;
+    Voice.onSpeechPartialResults = onSpeechResults;
     // Voice.onSpeechError = onSpeechError;
     // Voice.onSpeechStart = onSpeechStart;
     // Voice.onSpeechEnd = onSpeechEnd;

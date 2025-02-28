@@ -184,18 +184,20 @@ const Plan = () => {
           onPressBtn={() =>{
             // console.log("USER: ",currentPlan);
             // console.log("USER: ",user);
-            // hitCancelSubscriptionAPI(
-            //   user,
-            //   setShowPlanCancellationModal,
-            //   setIsCancelBtnLoading,
-            // )
+            hitCancelSubscriptionAPI(
+              user,
+              setShowPlanCancellationModal,
+              setIsCancelBtnLoading,
+            )
           }
           }
           onPressClose={() => setShowPlanCancellationModal(false)}
         />
         <CustomButton
           title="Purchase Subscription"
-          onPress={() =>
+          onPress={
+            // console.log("SUBSCRIPTIONSS : ",subscriptions) &&
+            () =>
             purchaseSubscription(
               subscriptions?.[0]?.productId,
               subscriptions?.[0]?.subscriptionOfferDetails,

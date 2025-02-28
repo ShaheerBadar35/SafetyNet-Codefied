@@ -89,7 +89,7 @@ const setAvailableSubscriptions = async (setSubscriptions: any = () => {}) => {
     return;
   }
    // $&
-   console.log("SUBSCRIPTIONS: ",subscriptions);
+  //  console.log("SUBSCRIPTIONS: ",subscriptions);
   setSubscriptions(() => subscriptions);
 };
 
@@ -120,7 +120,9 @@ const purchaseSubscription = async (
 ) => {
   const offerToken = offerTokens.map((offer: any) => offer.offerToken);
    // $&
-
+  console.log("PRODUCT ID: ",productId);
+  console.log("offerTOKENS: ",offerTokens);
+  console.log("offerTOKEN: ",offerToken);
   try {
     const purchase: any = await RNIap.requestSubscription({
       sku: productId,
@@ -170,91 +172,6 @@ const purchaseSubscription = async (
   }
 };
 
-// const hitCancelSubscriptionAPI = (
-//   user: any,
-//   setModal: any,
-//   isBtnLoading: any,
-// ) => {
-//   isBtnLoading && isBtnLoading(true);
-//   Toast.show({
-//     type: TOAST_TYPES.DARK_SUCCESS,
-//     props: {
-//       title: 'Cancel Subscription Modal',
-//     },
-//   });
-//   const params: any = {
-//     email: user?.email,
-//     packageName: 'com.safetynet.app',
-// -   subscriptionId: user?.subscription?.productId,
-// -   purchaseToken: user?.subscription?.purchaseToken,
-// +   subscriptionID: user?.subscription?.productId,
-// +   token: user?.subscription?.purchaseToken,
-//   };
-//   cancelSubscriptionAPI(params)
-//     .then(({data}: any) => {
-//       Toast.show({
-//         type: TOAST_TYPES.DARK_SUCCESS,
-//         props: {
-//           title: data?.message || 'Subscription Cancelled Successfully',
-//         },
-//       });
-//     })
-//     .catch((err: any) => {
-//       Toast.show({
-//         type: TOAST_TYPES.ERROR,
-//         props: {
-//           title: err?.message || 'Error while Cancelling subscription',
-//         },
-//       });
-//     })
-//     .finally(() => {
-//       isBtnLoading && isBtnLoading(false);
-//       setModal && setModal(false);
-//     });
-// };
-
-// const hitCancelSubscriptionAPI =(
-//   user:any,
-//   setModal:any,
-//   isBtnLoading:any,)=>{
-//     isBtnLoading && isBtnLoading(true);
-//     Toast.show({
-//       type: TOAST_TYPES.DARK_SUCCESS,
-//       props: {
-//         title: 'Cancel Subscription Modal',
-//       },
-//     });
-//     const params: any = {
-//       email: user?.email,
-//       packageName: 'com.safetynet.app',
-//       subscriptionId: user?.subscription?.productId,
-//       purchaseToken: user?.subscription?.purchaseToken,
-//       subscriptionID: user?.subscription?.productId,
-//       token: user?.subscription?.purchaseToken,
-//     };    
-//     cancelSubscriptionAPI(params)
-//     .then(({data}: any) => {
-//       Toast.show({
-//         type: TOAST_TYPES.DARK_SUCCESS,
-//         props: {
-//           title: data?.message || 'Subscription Cancelled Successfully',
-//         },
-//       });
-//     })
-//     .catch((err: any) => {
-//       Toast.show({
-//         type: TOAST_TYPES.ERROR,
-//         props: {
-//           title: err?.message || 'Error while Cancelling subscription',
-//         },
-//       });
-//     })
-//     .finally(() => {
-//       isBtnLoading && isBtnLoading(false);
-//       setModal && setModal(false);
-//     });    
-// };
-
 const hitCancelSubscriptionAPI = (
   user: any,
   setModal: any,
@@ -273,7 +190,7 @@ const hitCancelSubscriptionAPI = (
     subscriptionId: user?.subscription?.productId,
     purchaseToken: user?.subscription?.purchaseToken,
   };
-  console.log(params);
+  // console.log("USER: ",user);
   cancelSubscriptionAPI(params)
     .then(({data}: any) => {
       Toast.show({
