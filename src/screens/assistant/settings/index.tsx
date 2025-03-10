@@ -95,14 +95,14 @@ const Settings = () => {
             fontFamily={INTER.REGULAR}
             color={COLORS.LIGHT_BLACK}
             style={{lineHeight: RF(16)}}
-            text={'1. Tap '}
-            Ntext={'‘Open Assistant Settings’ '}
+            text={'1. Open your device\'s phone settings and search for '}
+            Ntext={'‘Google Settings’ '}
             Nsize={10}
             NfontFamily={INTER.BOLD}
             Ncolor={COLORS.LIGHT_BLACK}
             Nstyle={{lineHeight: RF(16)}}
             N2text={
-              'below. This button will take you right to your phone’s Assistant settings.'
+              'This will take you right to your phone’s Google settings.'
             }
             N2size={10}
             N2fontFamily={INTER.REGULAR}
@@ -138,26 +138,26 @@ const Settings = () => {
             color={COLORS.LIGHT_BLACK}
             style={{lineHeight: RF(16)}}
             text={
-              'If you don’t see it immediately, try scrolling down or looking under '
+              'If you don’t see it immediately, try clicking on \'All Services\' tab and look for '
             }
-            Ntext={'‘Popular Settings’ '}
+            Ntext={'‘Search, Assistant and Voice’'}
             Nsize={10}
             NfontFamily={INTER.BOLD}
             Ncolor={COLORS.LIGHT_BLACK}
             Nstyle={{lineHeight: RF(16)}}
-            N2text={' or '}
+            // N2text={' or '}
             N2size={10}
             N2fontFamily={INTER.REGULAR}
             N2color={COLORS.LIGHT_BLACK}
             N2style={{lineHeight: RF(16)}}
-            N3text={' ‘All Settings’.'}
+            // N3text={' ‘All Settings’.'}
             N3size={10}
             N3fontFamily={INTER.BOLD}
             N3color={COLORS.LIGHT_BLACK}
             N3style={{lineHeight: RF(16)}}
             containerStyle={{...SPACING.mt4}}
           />
-          <CustomButton
+          {/* <CustomButton
             title={'Open Assitant Settings'}
             titleSize={12}
             titleColor={COLORS.DARK_GRAY}
@@ -172,7 +172,7 @@ const Settings = () => {
             }}
             customContainerStyle={{width: WP(50), ...SPACING.mt5}}
             onPress={openGoogleServicesSettings}
-          />
+          /> */}
         </ScrollView>
         <CustomIcon
           path={ICONS.ASSISTANT}
