@@ -7,7 +7,7 @@ import {COLORS} from '@theme/colors';
 import {INTER} from '@theme/fonts';
 import {HP, RF, WP} from '@theme/responsive';
 import {SPACING} from '@theme/spacing';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Alert,
   FlatList,
@@ -42,6 +42,12 @@ const AddFromExistingContactModal = ({
   const [loading, setLoading] = useState(false);
   const [selectedContacts, setSelectedContacts] =
     useState(selectedContactsList);
+    
+  //new change for the fix
+  useEffect(()=>{                                     
+    setSelectedContacts(selectedContactsList);
+  },[selectedContactsList]);
+  
   return (
     <>
       <Modal animationType="fade" transparent={true} visible={open}>
@@ -142,31 +148,31 @@ const RenderItem = ({
   item,
   selectedContacts = [],
   setSelectedContacts = () => {},
-  emergencyContacts=[],
+  emergencyContacts = [],
 }: any) => {
-  const [check, setCheck] = useState(
-    selectedContacts?.some((obj: any) => obj?.['id'] === item?.id) || false,
-  );
+  // Derive checked state from current selectedContacts
+  const isChecked = selectedContacts?.some((obj: any) => obj?.id === item?.id);
+  const isEmergency = emergencyContacts?.some((obj: any) => obj?.number === item?.number);
+
   return (
     <Pressable
       style={[styles.row, {width: '100%', ...SPACING.pb3}]}
       onPress={() => {
-        if (selectedContacts?.length <= 3) {
-          if (check) {
-            setSelectedContacts((pre: any) => {
-              return pre?.filter((itm: any) => itm?.id != item?.id);
-            });
-          } else {
-            setSelectedContacts((pre: any) => {
-              return [...pre, item];
-            });
-          }
-        } else if (check == true) {
-          setSelectedContacts((pre: any) => {
-            return pre?.filter((itm: any) => itm?.id != item?.id);
-          });
+        // if (isEmergency) {
+        //   Alert.alert('Error', 'This contact is already an emergency contact.');
+        //   return;
+        // }
+
+        if (selectedContacts.length >= 4 && !isChecked) {
+          Alert.alert('Maximum 4 contacts allowed');
+          return;
         }
-        if (selectedContacts?.length <= 3) setCheck(!check);
+
+        const newSelection = isChecked
+          ? selectedContacts.filter((itm: any) => itm?.id !== item?.id)
+          : [...selectedContacts, item];
+        
+        setSelectedContacts(newSelection);
       }}>
       <View style={[styles.row, {justifyContent: 'flex-start', width: '60%'}]}>
         <View style={styles.nameCon}>
@@ -188,68 +194,63 @@ const RenderItem = ({
           {item?.name}
         </CustomText>
       </View>
-      <Pressable style={[styles.iconCon]}>
-        {check && (
+      <Pressable style={styles.iconCon}>
+        {/* Always show checkmark if checked, regardless of emergency status */}
+        {isChecked && (
           <CustomIcon
             path={ICONS.CHECKED}
             resizeMode="cover"
-            tintColor={COLORS.PRIMARY}
+            tintColor={COLORS.PRIMARY} // Gray out if emergency
             containerStyle={styles.checkedIcon}
-            onPress={() => {
-              // setCheck(!check)
-              if (selectedContacts?.length <= 3) {
-                if (check) {
-                  setSelectedContacts((pre: any) => {
-                    return pre?.filter((itm: any) => itm?.id != item?.id);
-                  });
-                } else {
-                  setSelectedContacts((pre: any) => {
-                    return [...pre, item];
-                  });
-                }
-              } else if (check == true) {
-                setSelectedContacts((pre: any) => {
-                  return pre?.filter((itm: any) => itm?.id != item?.id);
-                });
-              }
-              if (selectedContacts?.length <= 3) setCheck(!check);
-            }}
           />
         )}
+        {/* Show emergency text if needed */}
+        {/* {isEmergency && (
+          <CustomText style={styles.emergencyText}>(Emergency)</CustomText>
+        )} */}
       </Pressable>
     </Pressable>
   );
 };
 
-// const RenderItem = ({ item, selectedContacts = [], setSelectedContacts = () => {} }: any) => {
-//   // Derive selection state from selectedContacts prop
-//   const isSelected = selectedContacts.some((obj: any) => obj?.id === item?.id);
-
-//   const toggleSelection = () => {
-//     if (isSelected) {
-//       // Remove the item from selectedContacts
-//       setSelectedContacts((prev: any) =>
-//         prev.filter((itm: any) => itm?.id !== item?.id)
-//       );
-//     } else {
-//       // Allow selection only if less than 3 items are selected
-//       if (selectedContacts.length < 3) {
-//         setSelectedContacts((prev: any) => [...prev, item]);
-//       }
-//     }
-//   };
-
+//OLD RENDER ITEM FUNCTION
+// const RenderItem = ({
+//   item,
+//   selectedContacts = [],
+//   setSelectedContacts = () => {},
+//   emergencyContacts=[],
+// }: any) => {
+//   const [check, setCheck] = useState(
+//     selectedContacts?.some((obj: any) => obj?.['id'] === item?.id) || false,
+//   );
 //   return (
 //     <Pressable
-//       style={[styles.row, { width: '100%', ...SPACING.pb3 }]}
-//       onPress={toggleSelection}>
-//       <View style={[styles.row, { justifyContent: 'flex-start', width: '60%' }]}>
+//       style={[styles.row, {width: '100%', ...SPACING.pb3}]}
+//       onPress={() => {
+//         if (selectedContacts?.length <= 3) {
+//           if (check) {
+//             setSelectedContacts((pre: any) => {
+//               return pre?.filter((itm: any) => itm?.id != item?.id);
+//             });
+//           } else {
+//             setSelectedContacts((pre: any) => {
+//               return [...pre, item];
+//             });
+//           }
+//         } else if (check == true) {
+//           setSelectedContacts((pre: any) => {
+//             return pre?.filter((itm: any) => itm?.id != item?.id);
+//           });
+//         }
+//         if (selectedContacts?.length <= 3) setCheck(!check);
+//       }}>
+//       <View style={[styles.row, {justifyContent: 'flex-start', width: '60%'}]}>
 //         <View style={styles.nameCon}>
 //           <CustomText
 //             size={12}
 //             fontFamily={INTER.BOLD}
 //             color={COLORS.DARK_GRAY_03}
-//             style={{ lineHeight: RF(19) }}
+//             style={{lineHeight: RF(19)}}
 //             numberOfLines={1}>
 //             {item?.name?.[0]?.toUpperCase()}
 //           </CustomText>
@@ -258,24 +259,44 @@ const RenderItem = ({
 //           size={12}
 //           fontFamily={INTER.BOLD}
 //           color={COLORS.LIGHT_BLACK_3}
-//           style={{ lineHeight: RF(19) }}
+//           style={{lineHeight: RF(19)}}
 //           numberOfLines={1}>
 //           {item?.name}
 //         </CustomText>
 //       </View>
-//       <Pressable style={[styles.iconCon]} onPress={toggleSelection}>
-//         {isSelected && (
+//       <Pressable style={[styles.iconCon]}>
+//         {check && (
 //           <CustomIcon
 //             path={ICONS.CHECKED}
 //             resizeMode="cover"
 //             tintColor={COLORS.PRIMARY}
 //             containerStyle={styles.checkedIcon}
+//             onPress={() => {
+//               // setCheck(!check)
+//               if (selectedContacts?.length <= 3) {
+//                 if (check) {
+//                   setSelectedContacts((pre: any) => {
+//                     return pre?.filter((itm: any) => itm?.id != item?.id);
+//                   });
+//                 } else {
+//                   setSelectedContacts((pre: any) => {
+//                     return [...pre, item];
+//                   });
+//                 }
+//               } else if (check == true) {
+//                 setSelectedContacts((pre: any) => {
+//                   return pre?.filter((itm: any) => itm?.id != item?.id);
+//                 });
+//               }
+//               if (selectedContacts?.length <= 3) setCheck(!check);
+//             }}
 //           />
 //         )}
 //       </Pressable>
 //     </Pressable>
 //   );
 // };
+
 
 const styles = StyleSheet.create({
   alertCon: {
@@ -341,6 +362,11 @@ const styles = StyleSheet.create({
     width: RF(17),
     height: RF(17),
   },
+  emergencyText: {
+    color: COLORS.ERROR,
+    fontSize: RF(10),
+    marginLeft: RF(5),
+  },  
 });
 
 export default AddFromExistingContactModal;
